@@ -1,7 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use serde_json::to_string_pretty;
-use warp::{http::StatusCode, Filter};
+use warp::{http::{header, StatusCode}, Filter};
 
 #[derive(Debug, Deserialize)]
 struct QueryParams {
@@ -49,7 +49,8 @@ async fn main() {
             let track = params.track.unwrap_or_else(|| "Unknown".to_string());
             let response = Response::new(slack_name, track);
             let pretty_json = to_string_pretty(&response).unwrap();
-            warp::reply::with_status(pretty_json, StatusCode::OK)
+            let response_with_header = warp::reply::with_header(pretty_json, header::CONTENT_TYPE, "application/json");
+            warp::reply::with_status(response_with_header, StatusCode::OK)
         });
 
     warp::serve(api).run(([0, 0, 0, 0], 8080)).await;
