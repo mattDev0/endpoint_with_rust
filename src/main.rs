@@ -30,8 +30,8 @@ async fn main() {
             let current_day = Utc::now().format("%A").to_string();
             let utc_time = Utc::now().format("%Y-%m-%dT%H:%M:%S%.3fZ").to_string();
             let track = params.track.unwrap_or_else(|| "Unknown".to_string());
-            let github_repo_url = "https://github.com/mattDev0/device_google_crosshatch".to_string();
-            let github_file_url = format!("{}/blob/main/src/main.rs", github_repo_url);
+            let github_repo_url = "https://github.com/mattDev0/endpoint_with_rust".to_string();
+            let github_file_url = format!("{}/blob/master/src/main.rs", github_repo_url);
             let status_code = StatusCode::OK.as_u16();
             let response = Response {
                 slack_name,
