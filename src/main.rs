@@ -22,7 +22,7 @@ struct Response {
 
 #[tokio::main]
 async fn main() {
-    let api = warp::path!("info")
+    let api = warp::path!("api")
         .and(warp::get())
         .and(warp::query::<QueryParams>())
         .map(|params: QueryParams| {
