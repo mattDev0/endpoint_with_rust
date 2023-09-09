@@ -25,7 +25,7 @@ impl Response {
         let utc_time = Utc::now().format("%Y-%m-%dT%H:%M:%SZ").to_string();
         let current_day = Utc::now().format("%A").to_string();
         let github_repo_url = "https://github.com/mattDev0/endpoint_with_rust".to_string();
-        let github_file_url = format!("{}/blob/master/main.rs", github_repo_url);
+        let github_file_url = format!("{}/blob/master/src/main.rs", github_repo_url);
         let status_code = StatusCode::OK.as_u16();
         Response {
             slack_name,
