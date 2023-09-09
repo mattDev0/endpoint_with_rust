@@ -46,5 +46,5 @@ async fn main() {
             warp::reply::with_status(pretty_json, StatusCode::OK)
         });
 
-    warp::serve(api).run(([127, 0, 0, 1], 8080)).await;
+    warp::serve(api).run(([0, 0, 0, 0], 8080)).await;
 }
